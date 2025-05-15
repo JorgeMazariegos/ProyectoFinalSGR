@@ -1,10 +1,11 @@
 package modelo;
 
 public class Persona {
-    private int id;
-    private String Nombre;
-    private int Telefono;
-    private String Direccion;
+    public int id;
+    public String Nombre;
+    public String Apellido;
+    public int Telefono;
+    public String Direccion;
      
     public Persona(int id, String Nombre, int Telefono, String Direccion){
     this.id = id;

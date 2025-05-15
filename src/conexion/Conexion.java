@@ -19,7 +19,7 @@ public class Conexion {
 
     public Conexion(){
         InputStream in;
-        String path = "C:\\Config\\DBConfig.properties";
+        String path = "C:\\Users\\josth\\Downloads\\ProyectoFinalSGR\\src\\conexion\\dbconfig.properties";
         
         try{
             in = Files.newInputStream(Paths.get(path));
