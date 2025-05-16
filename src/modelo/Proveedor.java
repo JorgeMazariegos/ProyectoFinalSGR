@@ -1,12 +1,11 @@
 package modelo;
 
 public class Proveedor extends Persona{
-      private String apellido;
       private String cargo;
       private boolean estado;
 
-    public Proveedor(String apellido, String cargo, boolean estado, int id, String Nombre, int Telefono, String Direccion) {
-        super(id, Nombre, Telefono, Direccion);
+    public Proveedor(String apellido, String cargo, boolean estado, int id, String nombre, String telefono, String direccion) {
+        super(id, nombre, telefono, direccion);
         this.apellido = apellido;
         this.cargo = cargo;
         this.estado = estado;

@@ -4,8 +4,8 @@ public class ClienteModelo extends Persona{
     private String correo;
     private String password;
 
-    public ClienteModelo(String correo, String password, int id, String Nombre, int Telefono, String Direccion) {
-        super(id, Nombre, Telefono, Direccion);
+    public ClienteModelo(String correo, String password, int id, String nombre, String telefono, String direccion) {
+        super(id, nombre, telefono, direccion);
         this.correo = correo;
         this.password = password;
     }

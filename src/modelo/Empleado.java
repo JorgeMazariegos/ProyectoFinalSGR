@@ -8,8 +8,8 @@ public class Empleado extends Persona{
     private String cargo;
     private String estado;
 
-    public Empleado(String cargo, String estado, int id, String Nombre, int Telefono, String Direccion) {
-        super(id, Nombre, Telefono, Direccion);
+    public Empleado(String cargo, String estado, int id, String nombre, String telefono, String direccion) {
+        super(id, nombre, telefono, direccion);
         this.cargo = cargo;
         this.estado = estado;
     }

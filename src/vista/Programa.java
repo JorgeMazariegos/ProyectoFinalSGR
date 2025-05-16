@@ -1,10 +1,14 @@
 package vista;
 
 import java.awt.Color;
+import controlador.ClienteControlador;
+import java.awt.CardLayout;
+import java.security.NoSuchAlgorithmException;
 
 public class Programa extends javax.swing.JFrame {
-
-
+    ClienteControlador clienteControlador = new ClienteControlador();
+    
+    
     public Programa() {
         initComponents();
     }
@@ -22,6 +26,7 @@ public class Programa extends javax.swing.JFrame {
         txtClave = new javax.swing.JTextField();
         btnLogin = new javax.swing.JButton();
         lblRegistrar = new javax.swing.JLabel();
+        lblMensaje = new javax.swing.JLabel();
         Registrar = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -39,10 +44,10 @@ public class Programa extends javax.swing.JFrame {
         jTextField6 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        aplicacionCliente = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
 
         mainPanel.setPreferredSize(new java.awt.Dimension(800, 600));
@@ -50,10 +55,8 @@ public class Programa extends javax.swing.JFrame {
 
         Login.setBackground(new java.awt.Color(51, 51, 51));
         Login.setLayout(null);
-
-        icono.setIcon(new javax.swing.ImageIcon("C:\\Users\\i5\\Desktop\\Instagram_logo_2016.svg (1).png")); // NOI18N
         Login.add(icono);
-        icono.setBounds(110, 220, 132, 132);
+        icono.setBounds(110, 150, 120, 70);
 
         panelLogin.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
 
@@ -94,6 +97,14 @@ public class Programa extends javax.swing.JFrame {
 
         lblRegistrar.setForeground(new java.awt.Color(102, 153, 255));
         lblRegistrar.setText("Registrar una cuenta");
+        lblRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblRegistrarMouseClicked(evt);
+            }
+        });
+
+        lblMensaje.setText("Mensaje:");
 
         javax.swing.GroupLayout panelLoginLayout = new javax.swing.GroupLayout(panelLogin);
         panelLogin.setLayout(panelLoginLayout);
@@ -110,8 +121,9 @@ public class Programa extends javax.swing.JFrame {
                     .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(btnLogin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtClave, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)))
-                .addGap(83, 83, 83))
+                        .addComponent(txtClave, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE))
+                    .addComponent(lblMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41))
         );
         panelLoginLayout.setVerticalGroup(
             panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,18 +138,18 @@ public class Programa extends javax.swing.JFrame {
                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblRegistrar)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addComponent(lblMensaje)
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         Login.add(panelLogin);
         panelLogin.setBounds(390, 70, 310, 430);
 
-        mainPanel.add(Login, "card2");
+        mainPanel.add(Login, "login");
 
         Registrar.setBackground(new java.awt.Color(51, 51, 51));
         Registrar.setLayout(null);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\i5\\Desktop\\Instagram_logo_2016.svg (1).png")); // NOI18N
 
         jLabel2.setText("Nombre");
 
@@ -249,7 +261,20 @@ public class Programa extends javax.swing.JFrame {
         Registrar.add(jPanel1);
         jPanel1.setBounds(150, 50, 510, 520);
 
-        mainPanel.add(Registrar, "card3");
+        mainPanel.add(Registrar, "registrar");
+
+        javax.swing.GroupLayout aplicacionClienteLayout = new javax.swing.GroupLayout(aplicacionCliente);
+        aplicacionCliente.setLayout(aplicacionClienteLayout);
+        aplicacionClienteLayout.setHorizontalGroup(
+            aplicacionClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 800, Short.MAX_VALUE)
+        );
+        aplicacionClienteLayout.setVerticalGroup(
+            aplicacionClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+
+        mainPanel.add(aplicacionCliente, "appCliente");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -301,12 +326,29 @@ public class Programa extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         String correo = txtCorreo.getText();
         String clave = txtClave.getText();
-      //if(controlador.Login(correo, clave));
-            //cambio de panel
-      //else
-            //mostrar mensaje "Contraseña/Usuario incorrecta"
-      
+        CardLayout card = (CardLayout)mainPanel.getLayout();
+
+        try{
+            switch(clienteControlador.loginCliente(correo, clave)){
+                case 1: 
+                    lblMensaje.setText("Correo incorrecto");
+                    break;
+                case 2:
+                    lblMensaje.setText("Contraseña incorrecta");
+                    break;
+                case 3:
+                    card.show(mainPanel, "appCliente");
+                    break;
+            }   
+        }catch(NoSuchAlgorithmException e){
+            System.out.println(e.getMessage());
+        }   
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void lblRegistrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistrarMouseClicked
+        CardLayout card = (CardLayout)mainPanel.getLayout();
+        card.show(mainPanel, "registrar");
+    }//GEN-LAST:event_lblRegistrarMouseClicked
 
     public static void main(String args[]) {
 
@@ -320,6 +362,7 @@ public class Programa extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Login;
     private javax.swing.JPanel Registrar;
+    private javax.swing.JPanel aplicacionCliente;
     private javax.swing.JButton btnLogin;
     private javax.swing.JLabel icono;
     private javax.swing.JButton jButton1;
@@ -338,6 +381,7 @@ public class Programa extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JLabel lblMensaje;
     private javax.swing.JLabel lblRegistrar;
     private javax.swing.JLabel lblSesion;
     private javax.swing.JPanel mainPanel;

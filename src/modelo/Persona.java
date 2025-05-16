@@ -2,16 +2,16 @@ package modelo;
 
 public class Persona {
     public int id;
-    public String Nombre;
-    public String Apellido;
-    public int Telefono;
-    public String Direccion;
+    public String nombre;
+    public String apellido;
+    public String telefono;
+    public String direccion;
      
-    public Persona(int id, String Nombre, int Telefono, String Direccion){
+    public Persona(int id, String nombre, String telefono, String direccion){
     this.id = id;
-    this.Nombre = Nombre;
-    this.Telefono = Telefono;
-    this.Direccion = Direccion; 
+    this.nombre = nombre;
+    this.telefono = telefono;
+    this.direccion = direccion; 
     }
 
     public int getId() {
@@ -23,26 +23,26 @@ public class Persona {
     }
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public int getTelefono() {
-        return Telefono;
+    public String getTelefono() {
+        return telefono;
     }
 
-    public void setTelefono(int Telefono) {
-        this.Telefono = Telefono;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     public String getDireccion() {
-        return Direccion;
+        return direccion;
     }
 
-    public void setDireccion(String Direccion) {
-        this.Direccion = Direccion;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     } 
     }

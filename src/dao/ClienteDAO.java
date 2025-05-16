@@ -5,16 +5,16 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-public class Cliente {
+public class ClienteDAO {
         private final Conexion conexion = new Conexion();
         Connection cn;
         ResultSet r;
         PreparedStatement ps;
         String query = "";
         
-        private boolean compronbarCorreo(String correo){
+        private boolean comprobarCorreo(String correo){
             query = "SELECT * FROM Usuario WHERE correo = ?";
-            boolean exisCorreo = false;
+            boolean existe = false;
 
             try {
                 cn = conexion.getConnection();
@@ -23,7 +23,7 @@ public class Cliente {
                 r = ps.executeQuery();
                 
                 if (r.next()) {
-                    exisCorreo = true;
+                    existe = true;
                 }
         
                 r.close();
@@ -34,12 +34,12 @@ public class Cliente {
                 System.out.println("Error al leer datos: " + e.getMessage());
                 
             }
-            return exisCorreo;
+            return existe;
         }
 
         private boolean comprobarClave(String correo, String Clave){
-            query = "SELECT * FROM Usuario WHERE username = ? AND password = ?";
-            boolean exisClave = false;
+            query = "SELECT * FROM Usuario WHERE correo = ? AND password = ?";
+            boolean existe = false;
             try {
                 cn = conexion.getConnection();
                 ps = cn.prepareStatement(query);
@@ -48,7 +48,7 @@ public class Cliente {
                 r = ps.executeQuery();
                 
                 if (r.next()) {
-                    exisClave = true;
+                    existe = true;
                 }
         
                 r.close();
@@ -59,11 +59,11 @@ public class Cliente {
                 System.out.println("Error al leer datos: " + e.getMessage());
                 
             }
-            return exisClave;
+            return existe;
         }
         
-        public int login(String correo, String contra){
-            if(compronbarCorreo(correo)==false){
+        public int loginCliente(String correo, String contra){
+            if(comprobarCorreo(correo)==false){
                 return 1;
             }
             if(comprobarClave(correo,contra)==false){
@@ -73,41 +73,41 @@ public class Cliente {
             
         }
         
-        public boolean SaveClien(ClienteModelo Clien) {
-        query = "INSERT INTO PUBLIC.Usuario (NOMBRE,TELEFONO,CORREO,DIRRECION,PASSWORD) "+
+        public boolean registrarCliente(ClienteModelo cliente) {
+        query = "INSERT INTO Usuarios (NOMBRE,TELEFONO,CORREO,DIRRECION,PASSWORD) "+
                 "VALUES (?,?,?,?,?)";
-        boolean resp=false;
+        boolean registro = false;
         try{
             cn = conexion.getConnection();
             ps = cn.prepareStatement(query);
-            ps.setString(1, Clien.getNombre());
-            ps.setInt(2, Clien.getTelefono());
-            ps.setString(3, Clien.getCorreo());
-            ps.setString(4, Clien.getDireccion());
-            ps.setString(5, Clien.getPassword());
+            ps.setString(1, cliente.getNombre());
+            ps.setString(2, cliente.getTelefono());
+            ps.setString(3, cliente.getCorreo());
+            ps.setString(4, cliente.getDireccion());
+            ps.setString(5, cliente.getPassword());
             int contador = ps.executeUpdate();
             if(contador==1){
-                resp = true;
+                registro = true;
             }
         cn.close();
         ps.close();   
         }catch(SQLException e){
             System.out.println(e.getMessage());
         }
-        return resp;
+        return registro;
         }
         
-        public boolean UpdateClien(ClienteModelo Clien) {
-        query = "UPDATE Usuario SET nombre=?, TELEFONO=?, salario=?,fecha_ingreso=? WHERE id_emp=?";
+        public boolean actualizarCliente(ClienteModelo cliente) {
+        query = "UPDATE Usuarios SET nombre = ?, telefono = ?, correo = ?, direccion = ?, password = ? WHERE id_emp=?";
 
         try (Connection conn = conexion.getConnection();
             PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setString(1, Clien.getNombre());
-            stmt.setInt(2, Clien.getTelefono());
-            stmt.setString(3, Clien.getCorreo());
-            stmt.setString(4, Clien.getDireccion());
-            stmt.setString(4, Clien.getPassword());
-            stmt.setInt(5, Clien.getId());
+            stmt.setString(1, cliente.getNombre());
+            stmt.setString(2, cliente.getTelefono());
+            stmt.setString(3, cliente.getCorreo());
+            stmt.setString(4, cliente.getDireccion());
+            stmt.setString(4, cliente.getPassword());
+            stmt.setInt(5, cliente.getId());
             stmt.executeUpdate();
             return true;
 

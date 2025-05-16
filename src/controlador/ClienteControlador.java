@@ -1,20 +1,20 @@
 package controlador;
 
 import modelo.ClienteModelo;
-import dao.Cliente;
+import dao.ClienteDAO;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class ClienteControlador {
-    private final Cliente dao = new Cliente();
+    private final ClienteDAO dao = new ClienteDAO();
     
-    public int login(String user, String pass)throws NoSuchAlgorithmException{
-        return dao.login(user,hashMD5(pass));
+    public int loginCliente(String user, String pass)throws NoSuchAlgorithmException{
+        return dao.loginCliente(user,hashMD5(pass));
     }
-    public boolean SaveClien(String correo, String password, int id, String Nombre, int Telefono, String Direccion)throws NoSuchAlgorithmException{
-        ClienteModelo cliente = new ClienteModelo(correo,hashMD5(password),id,Nombre,Telefono,Direccion);
-        return dao.SaveClien(cliente);
+    public boolean registrarCliente(String correo, String password, int id, String nombre, String telefono, String direccion) throws NoSuchAlgorithmException{
+        ClienteModelo cliente = new ClienteModelo(correo, hashMD5(password), id, nombre, telefono, direccion);
+        return dao.registrarCliente(cliente);
     }    
     
     public String hashMD5(String input) throws NoSuchAlgorithmException{
