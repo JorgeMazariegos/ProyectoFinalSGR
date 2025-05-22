@@ -709,18 +709,13 @@ public class Programa extends javax.swing.JFrame {
     
     private void lblAddPedidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAddPedidoMouseClicked
         Producto producto = productoActual();
-        for(int f = 0; f<tblRegistrarPedido.getRowCount(); f++){
-            if(tblRegistrarPedido.getValueAt(f, 0) == cbxListaProductos.getSelectedItem()){
-                if((int)tblRegistrarPedido.getValueAt(f, 2) == producto.getStock()){
-                    return;
-                }
-            }
-        }     
-        
-        
+       
         if(existeRegistro()){
             for(int f = 0; f<tblRegistrarPedido.getRowCount(); f++){
                 if(tblRegistrarPedido.getValueAt(f, 0) == cbxListaProductos.getSelectedItem()){
+                    if((int)tblRegistrarPedido.getValueAt(f, 2) + (int)spnCantidad.getValue() > producto.getStock()){
+                        return;
+                    }
                     tblRegistrarPedido.setValueAt((int)tblRegistrarPedido.getValueAt(f, 2) + (int)spnCantidad.getValue(), f, 2);
                     tblRegistrarPedido.setValueAt((double)tblRegistrarPedido.getValueAt(f, 3) + calcularTotal(), f, 3);
                 }          
