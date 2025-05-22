@@ -1,6 +1,6 @@
 package dao;
 import conexion.Conexion;
-import modelo.ClienteModelo;
+import modelo.Cliente;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
@@ -12,8 +12,8 @@ public class ClienteDAO {
         PreparedStatement ps;
         String query = "";
         
-        private boolean comprobarCorreo(String correo){
-            query = "SELECT * FROM Usuario WHERE correo = ?";
+        public boolean comprobarCorreo(String correo){
+            query = "SELECT correo FROM Usuarios WHERE correo = ?";
             boolean existe = false;
 
             try {
@@ -37,8 +37,8 @@ public class ClienteDAO {
             return existe;
         }
 
-        private boolean comprobarClave(String correo, String Clave){
-            query = "SELECT * FROM Usuario WHERE correo = ? AND password = ?";
+        public boolean comprobarClave(String correo, String Clave){
+            query = "SELECT correo, password FROM Usuarios WHERE correo = ? AND password = ?";
             boolean existe = false;
             try {
                 cn = conexion.getConnection();
@@ -62,18 +62,7 @@ public class ClienteDAO {
             return existe;
         }
         
-        public int loginCliente(String correo, String contra){
-            if(comprobarCorreo(correo)==false){
-                return 1;
-            }
-            if(comprobarClave(correo,contra)==false){
-                return 2;
-            }
-            return 3;
-            
-        }
-        
-        public boolean registrarCliente(ClienteModelo cliente) {
+        public boolean registrarCliente(Cliente cliente) {
         query = "INSERT INTO Usuarios (NOMBRE,TELEFONO,CORREO,DIRRECION,PASSWORD) "+
                 "VALUES (?,?,?,?,?)";
         boolean registro = false;
@@ -97,7 +86,7 @@ public class ClienteDAO {
         return registro;
         }
         
-        public boolean actualizarCliente(ClienteModelo cliente) {
+        public boolean actualizarCliente(Cliente cliente) {
         query = "UPDATE Usuarios SET nombre = ?, telefono = ?, correo = ?, direccion = ?, password = ? WHERE id_emp=?";
 
         try (Connection conn = conexion.getConnection();

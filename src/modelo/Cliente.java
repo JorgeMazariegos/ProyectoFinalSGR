@@ -1,10 +1,10 @@
 package modelo;
 
-public class ClienteModelo extends Persona{
+public class Cliente extends Persona{
     private String correo;
     private String password;
 
-    public ClienteModelo(String correo, String password, int id, String nombre, String telefono, String direccion) {
+    public Cliente(String correo, String password, int id, String nombre, String telefono, String direccion) {
         super(id, nombre, telefono, direccion);
         this.correo = correo;
         this.password = password;
