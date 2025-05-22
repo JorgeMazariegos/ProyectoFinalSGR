@@ -3,15 +3,22 @@ package vista;
 import java.awt.Color;
 import controlador.ClienteControlador;
 import controlador.EmpleadoControlador;
+import controlador.ProductoControlador;
 import controlador.mainControlador;
+import modelo.Producto;
 import java.awt.CardLayout;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.table.DefaultTableModel;
 
 public class Programa extends javax.swing.JFrame {
     ClienteControlador clienteControlador = new ClienteControlador();
     EmpleadoControlador empleadoControlador = new EmpleadoControlador();
+    ProductoControlador productoControlador = new ProductoControlador();
     mainControlador mainControlador = new mainControlador();
     boolean loginPassword = false;
+    List<Producto> listaProductos = productoControlador.consultarProductos();
     
     
     public Programa() {
@@ -55,13 +62,13 @@ public class Programa extends javax.swing.JFrame {
         menuCajero = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnRegistrarOrden = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         registrarCajero = new javax.swing.JPanel();
         lblTitulo = new javax.swing.JLabel();
         lblLogo = new javax.swing.JLabel();
         lblRegProducto = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbxListaProductos = new javax.swing.JComboBox<>();
         lblRegDisponible = new javax.swing.JLabel();
         lblDisponible = new javax.swing.JLabel();
         lblPrecio = new javax.swing.JLabel();
@@ -71,7 +78,7 @@ public class Programa extends javax.swing.JFrame {
         tblRegistrarPedido = new javax.swing.JTable();
         lblRegProducto1 = new javax.swing.JLabel();
         spnCantidad = new javax.swing.JSpinner();
-        jLabel11 = new javax.swing.JLabel();
+        lblAddPedido = new javax.swing.JLabel();
         lblMostrarPrecio1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -323,7 +330,12 @@ public class Programa extends javax.swing.JFrame {
 
         jButton2.setText("COMPLETAR UNA ORDEN");
 
-        jButton3.setText("REGISTRAR UNA ORDEN");
+        btnRegistrarOrden.setText("REGISTRAR UNA ORDEN");
+        btnRegistrarOrden.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarOrdenActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -331,7 +343,7 @@ public class Programa extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(57, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRegistrarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55))
@@ -342,7 +354,7 @@ public class Programa extends javax.swing.JFrame {
                 .addContainerGap(137, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnRegistrarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(93, 93, 93))
         );
 
@@ -359,29 +371,36 @@ public class Programa extends javax.swing.JFrame {
 
         lblTitulo.setBackground(new java.awt.Color(0, 0, 0));
         lblTitulo.setFont(new java.awt.Font("Arial Black", 1, 32)); // NOI18N
-        lblTitulo.setText("Registrar Pedido");
+        lblTitulo.setText("Cobrar Pedido");
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/registrar.png"))); // NOI18N
 
         lblRegProducto.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         lblRegProducto.setText("Producto");
 
+        cbxListaProductos.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbxListaProductosItemStateChanged(evt);
+            }
+        });
+
         lblRegDisponible.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         lblRegDisponible.setText("Disponible");
 
-        lblDisponible.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblDisponible.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblDisponible.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDisponible.setText("-");
 
         lblPrecio.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         lblPrecio.setText("Precio");
 
-        lblTotalPrecio.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblTotalPrecio.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblTotalPrecio.setText("Q 0.0");
 
         lblTotal.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         lblTotal.setText("Total");
 
+        tblRegistrarPedido.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         tblRegistrarPedido.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -400,10 +419,26 @@ public class Programa extends javax.swing.JFrame {
 
         spnCantidad.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         spnCantidad.setOpaque(true);
+        spnCantidad.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spnCantidadStateChanged(evt);
+            }
+        });
+        spnCantidad.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                spnCantidadPropertyChange(evt);
+            }
+        });
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/add.png"))); // NOI18N
+        lblAddPedido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/add.png"))); // NOI18N
+        lblAddPedido.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblAddPedido.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblAddPedidoMouseClicked(evt);
+            }
+        });
 
-        lblMostrarPrecio1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblMostrarPrecio1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblMostrarPrecio1.setText("Q 0.0");
 
         javax.swing.GroupLayout registrarCajeroLayout = new javax.swing.GroupLayout(registrarCajero);
@@ -413,37 +448,37 @@ public class Programa extends javax.swing.JFrame {
             .addGroup(registrarCajeroLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(registrarCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(registrarCajeroLayout.createSequentialGroup()
-                        .addComponent(lblTitulo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblLogo))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(registrarCajeroLayout.createSequentialGroup()
-                        .addGroup(registrarCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(registrarCajeroLayout.createSequentialGroup()
-                                .addComponent(lblRegProducto)
-                                .addGap(18, 18, 18)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblRegDisponible)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(registrarCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(registrarCajeroLayout.createSequentialGroup()
                                 .addComponent(lblRegProducto1)
                                 .addGap(18, 18, 18)
-                                .addComponent(spnCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(registrarCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(spnCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(registrarCajeroLayout.createSequentialGroup()
-                                .addComponent(lblTotal)
-                                .addGap(27, 27, 27)
-                                .addComponent(lblTotalPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(registrarCajeroLayout.createSequentialGroup()
-                                .addComponent(lblPrecio)
+                                .addComponent(lblRegProducto)
                                 .addGap(18, 18, 18)
-                                .addComponent(lblMostrarPrecio1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(cbxListaProductos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lblTitulo))
+                        .addGap(39, 39, 39)
+                        .addGroup(registrarCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblLogo)
+                            .addGroup(registrarCajeroLayout.createSequentialGroup()
+                                .addComponent(lblRegDisponible)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(registrarCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(registrarCajeroLayout.createSequentialGroup()
+                                        .addComponent(lblTotal)
+                                        .addGap(27, 27, 27)
+                                        .addComponent(lblTotalPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(registrarCajeroLayout.createSequentialGroup()
+                                        .addComponent(lblPrecio)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(lblMostrarPrecio1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(36, 36, 36)
+                                .addComponent(lblAddPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
         registrarCajeroLayout.setVerticalGroup(
@@ -452,40 +487,46 @@ public class Programa extends javax.swing.JFrame {
                 .addGroup(registrarCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(registrarCajeroLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(lblLogo)
-                        .addGap(17, 17, 17)
-                        .addGroup(registrarCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(registrarCajeroLayout.createSequentialGroup()
-                                .addGroup(registrarCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(registrarCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(lblRegProducto)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblRegDisponible)
-                                        .addComponent(lblDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(lblPrecio))
-                                .addGap(18, 18, 18)
-                                .addGroup(registrarCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblTotal)
-                                    .addComponent(lblRegProducto1)
-                                    .addComponent(spnCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, registrarCajeroLayout.createSequentialGroup()
-                                .addComponent(lblMostrarPrecio1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(1, 1, 1))))
+                        .addComponent(lblLogo))
                     .addGroup(registrarCajeroLayout.createSequentialGroup()
                         .addGap(32, 32, 32)
-                        .addComponent(lblTitulo))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registrarCajeroLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(registrarCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblTotalPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(1, 1, 1)))
-                .addGap(18, 18, 18)
+                        .addComponent(lblTitulo)))
+                .addGroup(registrarCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(registrarCajeroLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(lblRegProducto)
+                        .addGap(18, 18, 18)
+                        .addGroup(registrarCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblRegProducto1)
+                            .addComponent(spnCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(registrarCajeroLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(registrarCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(registrarCajeroLayout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addGroup(registrarCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(registrarCajeroLayout.createSequentialGroup()
+                                        .addGroup(registrarCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lblRegDisponible)
+                                            .addComponent(lblPrecio))
+                                        .addGap(39, 39, 39))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, registrarCajeroLayout.createSequentialGroup()
+                                        .addComponent(lblMostrarPrecio1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(1, 1, 1))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registrarCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblTotalPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblTotal))
+                            .addComponent(lblAddPedido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(registrarCajeroLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(cbxListaProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
 
-        aplicacionCajero.add(registrarCajero, "card3");
+        aplicacionCajero.add(registrarCajero, "registrarCajero");
 
         mainPanel.add(aplicacionCajero, "appCajero");
 
@@ -519,7 +560,7 @@ public class Programa extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCorreoFocusLost
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        String correo = txtCorreo.getText();
+     /*   String correo = txtCorreo.getText();
         char[] password = passClave.getPassword();
         String clave = String.valueOf(password);
         
@@ -533,9 +574,9 @@ public class Programa extends javax.swing.JFrame {
                 loginCajero(correo, clave);
                 break;
                 
-        }
-
-           
+        } */
+      CardLayout card = (CardLayout)mainPanel.getLayout();
+      card.show(mainPanel, "appCajero");
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void loginCliente(String correo, String clave){
@@ -584,7 +625,9 @@ public class Programa extends javax.swing.JFrame {
     private void passClaveFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passClaveFocusGained
         if("Contraseña".equals(String.valueOf(passClave.getPassword()))){
             passClave.setText("");
-            loginPassword = false;
+           // if(loginPassword){
+           //     loginPassword = false;
+           // }        
             passClave.setForeground(Color.BLACK);
         }
         passwordSetVisible();
@@ -593,17 +636,121 @@ public class Programa extends javax.swing.JFrame {
     private void passClaveFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passClaveFocusLost
         if("".equals(String.valueOf(passClave.getPassword()))){
             passClave.setText("Contraseña");
-            loginPassword = true;
+           // if(!loginPassword){
+           //     loginPassword = true;
+           // }         
             passClave.setForeground(Color.GRAY);      
         }
         passwordSetVisible();
     }//GEN-LAST:event_passClaveFocusLost
 
     private void lblShowHideMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblShowHideMouseClicked
+        if(loginPassword){
+            lblShowHide.setForeground(Color.blue);
+        }else{
+            lblShowHide.setForeground(Color.red);
+        }
+            
         loginPassword = !loginPassword;
         passwordSetVisible();
     }//GEN-LAST:event_lblShowHideMouseClicked
 
+    private void btnRegistrarOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarOrdenActionPerformed
+        CardLayout card = (CardLayout)aplicacionCajero.getLayout();
+        card.show(aplicacionCajero, "registrarCajero");
+                
+        for(Producto productos : listaProductos){
+            cbxListaProductos.addItem(productos.getNombre());
+        }      
+    }//GEN-LAST:event_btnRegistrarOrdenActionPerformed
+
+    private Producto productoActual(){
+        
+        for(Producto producto : listaProductos){
+            if(producto.getNombre() == cbxListaProductos.getSelectedItem()){
+                return producto;
+            }           
+        }
+        for(Producto producto : listaProductos){ 
+                return producto;       
+        }
+        return null;
+    }
+    
+    private void cbxListaProductosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxListaProductosItemStateChanged
+        Producto producto = productoActual();
+        if(producto.getNombre() == cbxListaProductos.getSelectedItem()){
+            lblDisponible.setText(String.valueOf(producto.getStock()));
+        }
+    
+        SpinnerNumberModel model = new SpinnerNumberModel(1, 1, Integer.parseInt(lblDisponible.getText()), 1);     
+        spnCantidad.setModel(model);
+       
+        if(producto.getNombre() == cbxListaProductos.getSelectedItem()){
+            lblMostrarPrecio1.setText("Q " + String.valueOf(producto.getPrecio()));
+        }
+    }//GEN-LAST:event_cbxListaProductosItemStateChanged
+
+    private void spnCantidadPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_spnCantidadPropertyChange
+        lblTotalPrecio.setText("Q " + calcularTotal());
+    }//GEN-LAST:event_spnCantidadPropertyChange
+
+    private void spnCantidadStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnCantidadStateChanged
+        lblTotalPrecio.setText("Q " + calcularTotal());
+    }//GEN-LAST:event_spnCantidadStateChanged
+
+    private double calcularTotal(){
+        Producto producto = productoActual();
+        double total = 0;
+        
+        if(producto.getNombre() == cbxListaProductos.getSelectedItem()){
+            total = producto.getPrecio() * (int)spnCantidad.getValue();
+        } 
+        return total;
+    }
+    
+    private void lblAddPedidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAddPedidoMouseClicked
+        Producto producto = productoActual();
+        for(int f = 0; f<tblRegistrarPedido.getRowCount(); f++){
+            if(tblRegistrarPedido.getValueAt(f, 0) == cbxListaProductos.getSelectedItem()){
+                if((int)tblRegistrarPedido.getValueAt(f, 2) == producto.getStock()){
+                    return;
+                }
+            }
+        }     
+        
+        
+        if(existeRegistro()){
+            for(int f = 0; f<tblRegistrarPedido.getRowCount(); f++){
+                if(tblRegistrarPedido.getValueAt(f, 0) == cbxListaProductos.getSelectedItem()){
+                    tblRegistrarPedido.setValueAt((int)tblRegistrarPedido.getValueAt(f, 2) + (int)spnCantidad.getValue(), f, 2);
+                    tblRegistrarPedido.setValueAt((double)tblRegistrarPedido.getValueAt(f, 3) + calcularTotal(), f, 3);
+                }          
+            }
+        }else{    
+            if(producto.getNombre() == cbxListaProductos.getSelectedItem()){
+                for(int f = 0; f<tblRegistrarPedido.getRowCount(); f++){                 
+                        if(tblRegistrarPedido.getValueAt(f, 0)==null){
+                            tblRegistrarPedido.setValueAt(producto.getNombre(), f, 0);
+                            tblRegistrarPedido.setValueAt(String.valueOf(producto.getPrecio()), f, 1);
+                            tblRegistrarPedido.setValueAt(spnCantidad.getValue(), f, 2);
+                            tblRegistrarPedido.setValueAt(calcularTotal(), f, 3);      
+                            return;
+                        }          
+                    }
+                }
+        }       
+    }//GEN-LAST:event_lblAddPedidoMouseClicked
+
+    private boolean existeRegistro(){
+        for(int f = 0; f<tblRegistrarPedido.getRowCount(); f++){
+            if(cbxListaProductos.getSelectedItem() == tblRegistrarPedido.getValueAt(f, 0)){
+                return true;
+            } 
+        }
+        return false;
+    }
+    
     private void passwordSetVisible(){
         if(loginPassword){
             passClave.setEchoChar('\u0000');
@@ -627,13 +774,12 @@ public class Programa extends javax.swing.JFrame {
     private javax.swing.JPanel aplicacionCajero;
     private javax.swing.JPanel aplicacionCliente;
     private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnRegistrarOrden;
+    private javax.swing.JComboBox<String> cbxListaProductos;
     private javax.swing.JLabel icono;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -651,6 +797,7 @@ public class Programa extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JLabel lblAddPedido;
     private javax.swing.JLabel lblDisponible;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblMensaje;
