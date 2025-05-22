@@ -10,7 +10,7 @@ import java.awt.CardLayout;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import javax.swing.SpinnerNumberModel;
-import javax.swing.table.DefaultTableModel;
+
 
 public class Programa extends javax.swing.JFrame {
     ClienteControlador clienteControlador = new ClienteControlador();
@@ -560,7 +560,7 @@ public class Programa extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCorreoFocusLost
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-     /*   String correo = txtCorreo.getText();
+        String correo = txtCorreo.getText();
         char[] password = passClave.getPassword();
         String clave = String.valueOf(password);
         
@@ -574,9 +574,7 @@ public class Programa extends javax.swing.JFrame {
                 loginCajero(correo, clave);
                 break;
                 
-        } */
-      CardLayout card = (CardLayout)mainPanel.getLayout();
-      card.show(mainPanel, "appCajero");
+        } 
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void loginCliente(String correo, String clave){
