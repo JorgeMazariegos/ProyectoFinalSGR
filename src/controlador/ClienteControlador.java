@@ -19,10 +19,14 @@ public class ClienteControlador {
         return 3;
     }
     
-    public boolean registrarCliente(String correo, String password, int id, String nombre, String telefono, String direccion) throws NoSuchAlgorithmException{
-        Cliente cliente = new Cliente(correo, hashMD5(password), id, nombre, telefono, direccion);
+    public boolean registrarCliente(String correo, String password, String nombre, String telefono, String direccion) throws NoSuchAlgorithmException{
+        Cliente cliente = new Cliente(correo, hashMD5(password), nombre, telefono, direccion);
         return dao.registrarCliente(cliente);
     }    
+    
+    public boolean comprobarCorreo(String correo){
+        return dao.comprobarCorreo(correo);
+    }
     
     public String hashMD5(String input) throws NoSuchAlgorithmException{
         MessageDigest md = MessageDigest.getInstance("MD5");

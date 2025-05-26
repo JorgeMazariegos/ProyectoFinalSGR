@@ -63,7 +63,7 @@ public class ClienteDAO {
         }
         
         public boolean registrarCliente(Cliente cliente) {
-        query = "INSERT INTO Usuarios (NOMBRE,TELEFONO,CORREO,DIRRECION,PASSWORD) "+
+        query = "INSERT INTO Usuarios (NOMBRE,TELEFONO,CORREO,DIRECCION,PASSWORD)"+
                 "VALUES (?,?,?,?,?)";
         boolean registro = false;
         try{

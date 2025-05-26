@@ -4,8 +4,8 @@ public class Proveedor extends Persona{
       private String cargo;
       private boolean estado;
 
-    public Proveedor(String apellido, String cargo, boolean estado, int id, String nombre, String telefono, String direccion) {
-        super(id, nombre, telefono, direccion);
+    public Proveedor(String apellido, String cargo, boolean estado, String nombre, String telefono, String direccion) {
+        super(nombre, telefono, direccion);
         this.apellido = apellido;
         this.cargo = cargo;
         this.estado = estado;
