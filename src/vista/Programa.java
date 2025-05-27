@@ -66,22 +66,6 @@ public class Programa extends javax.swing.JFrame {
         lblRegMensaje = new javax.swing.JLabel();
         lblIcono = new javax.swing.JLabel();
         aplicacionCliente = new javax.swing.JPanel();
-        registrarCajero = new javax.swing.JPanel();
-        lblTitulo = new javax.swing.JLabel();
-        lblLogo = new javax.swing.JLabel();
-        lblRegProducto = new javax.swing.JLabel();
-        cbxListaProductos = new javax.swing.JComboBox<>();
-        lblRegDisponible = new javax.swing.JLabel();
-        lblDisponible = new javax.swing.JLabel();
-        lblPrecio = new javax.swing.JLabel();
-        lblTotalPrecio = new javax.swing.JLabel();
-        lblTotal = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblRegistrarPedido = new javax.swing.JTable();
-        lblRegProducto1 = new javax.swing.JLabel();
-        spnCantidad = new javax.swing.JSpinner();
-        lblAddPedido = new javax.swing.JLabel();
-        lblMostrarPrecio1 = new javax.swing.JLabel();
         aplicacionCajero = new javax.swing.JPanel();
         menuBarCajero = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -97,7 +81,7 @@ public class Programa extends javax.swing.JFrame {
         regOrden = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblProdReg = new javax.swing.JTable();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -111,8 +95,8 @@ public class Programa extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         lblPrecioReg = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        lblTotReg = new javax.swing.JLabel();
+        lblAddReg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -429,9 +413,8 @@ public class Programa extends javax.swing.JFrame {
                             .addComponent(txtRegDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtRegTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtRegNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pnlRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(passRegClave, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(passRegClaveConf, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE))
+                            .addComponent(passRegClave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(passRegClaveConf)
                             .addComponent(lblRegMensaje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
@@ -481,176 +464,10 @@ public class Programa extends javax.swing.JFrame {
         );
         aplicacionClienteLayout.setVerticalGroup(
             aplicacionClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGap(0, 608, Short.MAX_VALUE)
         );
 
         mainPanel.add(aplicacionCliente, "appCliente");
-
-        lblTitulo.setBackground(new java.awt.Color(0, 0, 0));
-        lblTitulo.setFont(new java.awt.Font("Arial Black", 1, 32)); // NOI18N
-        lblTitulo.setText("Cobrar Pedido");
-
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/registrar.png"))); // NOI18N
-
-        lblRegProducto.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        lblRegProducto.setText("Producto");
-
-        cbxListaProductos.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbxListaProductosItemStateChanged(evt);
-            }
-        });
-
-        lblRegDisponible.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        lblRegDisponible.setText("Disponible");
-
-        lblDisponible.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lblDisponible.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblDisponible.setText("-");
-
-        lblPrecio.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        lblPrecio.setText("Precio");
-
-        lblTotalPrecio.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lblTotalPrecio.setText("Q 0.0");
-
-        lblTotal.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        lblTotal.setText("Total");
-
-        tblRegistrarPedido.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        tblRegistrarPedido.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Producto", "Precio Unitario", "Cantidad", "Total"
-            }
-        ));
-        jScrollPane1.setViewportView(tblRegistrarPedido);
-        if (tblRegistrarPedido.getColumnModel().getColumnCount() > 0) {
-            tblRegistrarPedido.getColumnModel().getColumn(0).setResizable(false);
-            tblRegistrarPedido.getColumnModel().getColumn(0).setPreferredWidth(200);
-            tblRegistrarPedido.getColumnModel().getColumn(1).setResizable(false);
-            tblRegistrarPedido.getColumnModel().getColumn(2).setResizable(false);
-            tblRegistrarPedido.getColumnModel().getColumn(3).setResizable(false);
-        }
-
-        lblRegProducto1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        lblRegProducto1.setText("Cantidad");
-
-        spnCantidad.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
-        spnCantidad.setOpaque(true);
-        spnCantidad.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                spnCantidadStateChanged(evt);
-            }
-        });
-        spnCantidad.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                spnCantidadPropertyChange(evt);
-            }
-        });
-
-        lblAddPedido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/add.png"))); // NOI18N
-        lblAddPedido.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblAddPedido.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblAddPedidoMouseClicked(evt);
-            }
-        });
-
-        lblMostrarPrecio1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lblMostrarPrecio1.setText("Q 0.0");
-
-        javax.swing.GroupLayout registrarCajeroLayout = new javax.swing.GroupLayout(registrarCajero);
-        registrarCajero.setLayout(registrarCajeroLayout);
-        registrarCajeroLayout.setHorizontalGroup(
-            registrarCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(registrarCajeroLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(registrarCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(registrarCajeroLayout.createSequentialGroup()
-                        .addGroup(registrarCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(registrarCajeroLayout.createSequentialGroup()
-                                .addComponent(lblRegProducto1)
-                                .addGap(18, 18, 18)
-                                .addComponent(spnCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(registrarCajeroLayout.createSequentialGroup()
-                                .addComponent(lblRegProducto)
-                                .addGap(18, 18, 18)
-                                .addComponent(cbxListaProductos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(lblTitulo))
-                        .addGap(39, 39, 39)
-                        .addGroup(registrarCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblLogo)
-                            .addGroup(registrarCajeroLayout.createSequentialGroup()
-                                .addComponent(lblRegDisponible)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(registrarCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(registrarCajeroLayout.createSequentialGroup()
-                                        .addComponent(lblTotal)
-                                        .addGap(27, 27, 27)
-                                        .addComponent(lblTotalPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(registrarCajeroLayout.createSequentialGroup()
-                                        .addComponent(lblPrecio)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(lblMostrarPrecio1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(36, 36, 36)
-                                .addComponent(lblAddPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(38, Short.MAX_VALUE))
-        );
-        registrarCajeroLayout.setVerticalGroup(
-            registrarCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(registrarCajeroLayout.createSequentialGroup()
-                .addGroup(registrarCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(registrarCajeroLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblLogo))
-                    .addGroup(registrarCajeroLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(lblTitulo)))
-                .addGroup(registrarCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(registrarCajeroLayout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(lblRegProducto)
-                        .addGap(18, 18, 18)
-                        .addGroup(registrarCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblRegProducto1)
-                            .addComponent(spnCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(registrarCajeroLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(registrarCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(registrarCajeroLayout.createSequentialGroup()
-                                .addGap(11, 11, 11)
-                                .addGroup(registrarCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(registrarCajeroLayout.createSequentialGroup()
-                                        .addGroup(registrarCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblDisponible, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lblRegDisponible)
-                                            .addComponent(lblPrecio))
-                                        .addGap(39, 39, 39))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, registrarCajeroLayout.createSequentialGroup()
-                                        .addComponent(lblMostrarPrecio1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(1, 1, 1))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registrarCajeroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblTotalPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblTotal))
-                            .addComponent(lblAddPedido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(registrarCajeroLayout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(cbxListaProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(106, Short.MAX_VALUE))
-        );
-
-        mainPanel.add(registrarCajero, "registrarCajero");
 
         aplicacionCajero.setBackground(new java.awt.Color(204, 102, 0));
         aplicacionCajero.setForeground(new java.awt.Color(102, 102, 255));
@@ -750,10 +567,10 @@ public class Programa extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(57, 62, 70));
         jPanel1.setPreferredSize(new java.awt.Dimension(420, 550));
 
-        jTable1.setBackground(new java.awt.Color(204, 204, 204));
-        jTable1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(153, 153, 153));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblProdReg.setBackground(new java.awt.Color(204, 204, 204));
+        tblProdReg.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        tblProdReg.setForeground(new java.awt.Color(0, 0, 0));
+        tblProdReg.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -868,10 +685,10 @@ public class Programa extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jTable1.setPreferredSize(new java.awt.Dimension(420, 80));
-        jScrollPane2.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(250);
+        tblProdReg.setPreferredSize(new java.awt.Dimension(420, 80));
+        jScrollPane2.setViewportView(tblProdReg);
+        if (tblProdReg.getColumnModel().getColumnCount() > 0) {
+            tblProdReg.getColumnModel().getColumn(0).setPreferredWidth(250);
         }
 
         jLabel16.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -887,15 +704,15 @@ public class Programa extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -904,7 +721,7 @@ public class Programa extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(jLabel17))
-                .addGap(8, 8, 8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -913,7 +730,6 @@ public class Programa extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(204, 204, 204));
         jLabel7.setText("Producto");
 
-        listProductos.setForeground(new java.awt.Color(0, 0, 0));
         listProductos.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1" };
             public int getSize() { return strings.length; }
@@ -927,6 +743,16 @@ public class Programa extends javax.swing.JFrame {
         jScrollPane3.setViewportView(listProductos);
 
         spnCantReg.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        spnCantReg.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spnCantRegStateChanged(evt);
+            }
+        });
+        spnCantReg.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                spnCantRegPropertyChange(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -949,10 +775,16 @@ public class Programa extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Total");
 
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("Q 0.0");
+        lblTotReg.setForeground(new java.awt.Color(255, 255, 255));
+        lblTotReg.setText("Q 0.0");
 
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/add.png"))); // NOI18N
+        lblAddReg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/add.png"))); // NOI18N
+        lblAddReg.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblAddReg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblAddRegMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout regOrdenLayout = new javax.swing.GroupLayout(regOrden);
         regOrden.setLayout(regOrdenLayout);
@@ -978,19 +810,19 @@ public class Programa extends javax.swing.JFrame {
                             .addGroup(regOrdenLayout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addGap(4, 4, 4)
-                                .addComponent(spnCantReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(24, 24, 24)
+                                .addComponent(spnCantReg, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(regOrdenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(regOrdenLayout.createSequentialGroup()
                                 .addComponent(jLabel13)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lblTotReg, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(regOrdenLayout.createSequentialGroup()
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblPrecioReg, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel15)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                        .addComponent(lblAddReg)))
                 .addContainerGap())
         );
         regOrdenLayout.setVerticalGroup(
@@ -998,7 +830,7 @@ public class Programa extends javax.swing.JFrame {
             .addGroup(regOrdenLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(regOrdenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE)
                     .addGroup(regOrdenLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addGroup(regOrdenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1009,7 +841,7 @@ public class Programa extends javax.swing.JFrame {
                         .addGroup(regOrdenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(regOrdenLayout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel15))
+                                .addComponent(lblAddReg))
                             .addGroup(regOrdenLayout.createSequentialGroup()
                                 .addGroup(regOrdenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(regOrdenLayout.createSequentialGroup()
@@ -1025,11 +857,11 @@ public class Programa extends javax.swing.JFrame {
                                 .addGroup(regOrdenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(regOrdenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jLabel13)
-                                        .addComponent(jLabel14))
+                                        .addComponent(lblTotReg))
                                     .addGroup(regOrdenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(spnCantReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 10, Short.MAX_VALUE)))
+                        .addGap(0, 18, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -1047,7 +879,7 @@ public class Programa extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE)
         );
 
         pack();
@@ -1108,66 +940,15 @@ public class Programa extends javax.swing.JFrame {
         return null;
     }
     
-    private void cbxListaProductosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxListaProductosItemStateChanged
-        Producto producto = productoActual();
-        if(producto.getNombre() == cbxListaProductos.getSelectedItem()){
-            lblDisponible.setText(String.valueOf(producto.getStock()));
-        }
-    
-        SpinnerNumberModel model = new SpinnerNumberModel(1, 1, Integer.parseInt(lblDisponible.getText()), 1);     
-        spnCantidad.setModel(model);
-       
-        if(producto.getNombre() == cbxListaProductos.getSelectedItem()){
-            lblMostrarPrecio1.setText("Q " + String.valueOf(producto.getPrecio()));
-        }
-    }//GEN-LAST:event_cbxListaProductosItemStateChanged
-
-    private void spnCantidadPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_spnCantidadPropertyChange
-        lblTotalPrecio.setText("Q " + calcularTotal());
-    }//GEN-LAST:event_spnCantidadPropertyChange
-
-    private void spnCantidadStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnCantidadStateChanged
-        lblTotalPrecio.setText("Q " + calcularTotal());
-    }//GEN-LAST:event_spnCantidadStateChanged
-
     private double calcularTotal(){
         Producto producto = productoActual();
         double total = 0;
         
-        if(producto.getNombre() == cbxListaProductos.getSelectedItem()){
-            total = producto.getPrecio() * (int)spnCantidad.getValue();
-        } 
+        total = producto.getPrecio() * (int)spnCantReg.getValue();
+  
         return total;
     }
     
-    private void lblAddPedidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAddPedidoMouseClicked
-        Producto producto = productoActual();
-       
-        if(existeRegistro()){
-            for(int f = 0; f<tblRegistrarPedido.getRowCount(); f++){
-                if(tblRegistrarPedido.getValueAt(f, 0) == cbxListaProductos.getSelectedItem()){
-                    if((int)tblRegistrarPedido.getValueAt(f, 2) + (int)spnCantidad.getValue() > producto.getStock()){
-                        return;
-                    }
-                    tblRegistrarPedido.setValueAt((int)tblRegistrarPedido.getValueAt(f, 2) + (int)spnCantidad.getValue(), f, 2);
-                    tblRegistrarPedido.setValueAt((double)tblRegistrarPedido.getValueAt(f, 3) + calcularTotal(), f, 3);
-                }          
-            }
-        }else{    
-            if(producto.getNombre() == cbxListaProductos.getSelectedItem()){
-                for(int f = 0; f<tblRegistrarPedido.getRowCount(); f++){                 
-                        if(tblRegistrarPedido.getValueAt(f, 0)==null){
-                            tblRegistrarPedido.setValueAt(producto.getNombre(), f, 0);
-                            tblRegistrarPedido.setValueAt(String.valueOf(producto.getPrecio()), f, 1);
-                            tblRegistrarPedido.setValueAt(spnCantidad.getValue(), f, 2);
-                            tblRegistrarPedido.setValueAt(calcularTotal(), f, 3);      
-                            return;
-                        }          
-                    }
-                }
-        }       
-    }//GEN-LAST:event_lblAddPedidoMouseClicked
-
     private void txtCorreoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCorreoFocusGained
         if("Correo".equals(txtCorreo.getText())){
             txtCorreo.setText("");
@@ -1188,7 +969,7 @@ public class Programa extends javax.swing.JFrame {
         char[] password = passClave.getPassword();
         String clave = String.valueOf(password);
 
-      /*  switch(mainControlador.comprobarCorreo(correo)){
+        switch(mainControlador.comprobarCorreo(correo)){
             case 1:
                 loginCliente(correo, clave);
                 break;
@@ -1203,9 +984,7 @@ public class Programa extends javax.swing.JFrame {
                 lblMensajeCorreo.setText("Correo incorrecto");
                 break;
         }
-        */
-        CardLayout card = (CardLayout)mainPanel.getLayout();
-        card.show(mainPanel, "appCajero");
+        
         DefaultListModel<String> model;
         model = new DefaultListModel<>();
         for(Producto productos : listaProductos){
@@ -1417,10 +1196,6 @@ public class Programa extends javax.swing.JFrame {
     private void lblRegistrarOrdenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistrarOrdenMouseClicked
         CardLayout card = (CardLayout)aplicacionCajero.getLayout();
         card.show(aplicacionCajero, "registrarCajero");
-
-        for(Producto productos : listaProductos){
-            cbxListaProductos.addItem(productos.getNombre());
-        }
     }//GEN-LAST:event_lblRegistrarOrdenMouseClicked
 
     private void listProductosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listProductosValueChanged
@@ -1433,17 +1208,54 @@ public class Programa extends javax.swing.JFrame {
         lblPrecioReg.setText("Q " + String.valueOf(producto.getPrecio()));
     }//GEN-LAST:event_listProductosValueChanged
 
+    private void lblAddRegMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAddRegMouseClicked
+        Producto producto = productoActual();
+       
+        if(existeRegistro()){
+            for(int f = 0; f<tblProdReg.getRowCount(); f++){
+                if(tblProdReg.getValueAt(f, 0) == listProductos.getSelectedValue()){
+                    if((int)tblProdReg.getValueAt(f, 1) + (int)spnCantReg.getValue() > producto.getStock()){
+                        return;
+                    }
+                    tblProdReg.setValueAt((int)tblProdReg.getValueAt(f, 1) + (int)spnCantReg.getValue(), f, 1);
+                    tblProdReg.setValueAt((double)tblProdReg.getValueAt(f, 4) + calcularTotal(), f, 4);
+                }          
+            }
+        }else{
+            
+            for(int f = 0; f<tblProdReg.getRowCount(); f++){
+                if(tblProdReg.getValueAt(f, 0)==null){
+                    tblProdReg.setValueAt(producto.getNombre(), f, 0);
+                    tblProdReg.setValueAt(spnCantReg.getValue(), f, 1);
+                    tblProdReg.setValueAt(producto.getPrecio(), f, 2);
+                    tblProdReg.setValueAt(10, f, 3);
+                    tblProdReg.setValueAt(calcularTotal(), f, 4);      
+                return;                     
+                }
+       
+            }
+        }  
+    }//GEN-LAST:event_lblAddRegMouseClicked
+
+    private void spnCantRegStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnCantRegStateChanged
+        lblTotReg.setText("Q " + calcularTotal());
+    }//GEN-LAST:event_spnCantRegStateChanged
+
+    private void spnCantRegPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_spnCantRegPropertyChange
+        lblTotReg.setText("Q " + calcularTotal());
+    }//GEN-LAST:event_spnCantRegPropertyChange
+
     private void showContra(){
         if(showPassword){
             passClave.setEchoChar('\u0000');
         }else{
-            passClave.setEchoChar('\u2022');
+            passClave.setEchoChar('j');
         }
     }
     
     private boolean existeRegistro(){
-        for(int f = 0; f<tblRegistrarPedido.getRowCount(); f++){
-            if(cbxListaProductos.getSelectedItem() == tblRegistrarPedido.getValueAt(f, 0)){
+        for(int f = 0; f<tblProdReg.getRowCount(); f++){
+            if(listProductos.getSelectedValue() == tblProdReg.getValueAt(f, 0)){
                 return true;
             } 
         }
@@ -1466,14 +1278,11 @@ public class Programa extends javax.swing.JFrame {
     private javax.swing.JPanel aplicacionCliente;
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnRegistrar;
-    private javax.swing.JComboBox<String> cbxListaProductos;
     private javax.swing.JComboBox<String> cbxRegProductos;
     private javax.swing.JLabel icono;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
@@ -1485,38 +1294,27 @@ public class Programa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JLabel lblAddPedido;
+    private javax.swing.JLabel lblAddReg;
     private javax.swing.JLabel lblDecoracion;
     private javax.swing.JLabel lblDispReg;
-    private javax.swing.JLabel lblDisponible;
     private javax.swing.JLabel lblIcono;
     private javax.swing.JLabel lblLoginTitle;
-    private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblMensajeContra;
     private javax.swing.JLabel lblMensajeCorreo;
-    private javax.swing.JLabel lblMostrarPrecio1;
-    private javax.swing.JLabel lblPrecio;
     private javax.swing.JLabel lblPrecioReg;
     private javax.swing.JLabel lblRegBack;
-    private javax.swing.JLabel lblRegDisponible;
     private javax.swing.JLabel lblRegMensaje;
-    private javax.swing.JLabel lblRegProducto;
-    private javax.swing.JLabel lblRegProducto1;
     private javax.swing.JLabel lblRegTitulo;
     private javax.swing.JLabel lblRegistrar;
     private javax.swing.JLabel lblRegistrarOrden;
     private javax.swing.JLabel lblShowHide;
     private javax.swing.JLabel lblTexto;
-    private javax.swing.JLabel lblTitulo;
-    private javax.swing.JLabel lblTotal;
-    private javax.swing.JLabel lblTotalPrecio;
+    private javax.swing.JLabel lblTotReg;
     private javax.swing.JList<String> listProductos;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel menuBarCajero;
@@ -1527,10 +1325,8 @@ public class Programa extends javax.swing.JFrame {
     private javax.swing.JPasswordField passRegClaveConf;
     private javax.swing.JPanel pnlRegistrar;
     private javax.swing.JPanel regOrden;
-    private javax.swing.JPanel registrarCajero;
     private javax.swing.JSpinner spnCantReg;
-    private javax.swing.JSpinner spnCantidad;
-    private javax.swing.JTable tblRegistrarPedido;
+    private javax.swing.JTable tblProdReg;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtRegCorreo;
     private javax.swing.JTextField txtRegDireccion;
