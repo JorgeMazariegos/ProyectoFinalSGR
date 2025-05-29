@@ -18,6 +18,16 @@ public class Producto {
         this.tipo = tipo;
     }
 
+    public Producto(int id, String nombre, double precio, String descripcion, int stock, boolean disponible, String tipo) {
+        this.id = id;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.descripcion = descripcion;
+        this.stock = stock;
+        this.disponible = disponible;
+        this.tipo = tipo;
+    }
+
     public String getTipo() {
         return tipo;
     }

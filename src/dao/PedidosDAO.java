@@ -55,7 +55,7 @@ public class PedidosDAO {
                 ps.setString(5, pedido.getProductos());
                 ps.setInt(6, pedido.getCantidad());
                 ps.setFloat(7, pedido.getDescuento());
-                ps.setBoolean(8, true);
+                ps.setBoolean(8, pedido.isEstado());
                 ps.setDouble(9, pedido.getPrecioUnitario());
                 seAgregoRegistro = ps.executeUpdate();
                 
@@ -92,4 +92,6 @@ public class PedidosDAO {
         }
         return update;     
         }
+        
+        
 }

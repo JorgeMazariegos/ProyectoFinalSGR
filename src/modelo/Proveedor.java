@@ -1,37 +1,34 @@
 package modelo;
 
 public class Proveedor extends Persona{
-      private String cargo;
-      private boolean estado;
+      private String nit;
+      private String telefonoContacto;
 
-    public Proveedor(String apellido, String cargo, boolean estado, String nombre, String telefono, String direccion) {
-        super(nombre, telefono, direccion);
-        this.apellido = apellido;
-        this.cargo = cargo;
-        this.estado = estado;
+    public Proveedor(int id, String nombre, String nit,  String correo, String direccion, String telefono, String telefonoContacto) {
+        super(id, nombre, telefono, direccion, correo);
+        this.nit = nit;
+        this.telefonoContacto = telefonoContacto;
     }
 
-    public String getApellido() {
-        return apellido;
+    public Proveedor(String nit, String telefonoContacto, String nombre, String telefono, String direccion, String correo) {
+        super(nombre, telefono, direccion, correo);
+        this.nit = nit;
+        this.telefonoContacto = telefonoContacto;
+    }
+    
+    public String getNit() {
+        return nit;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setNit(String nit) {
+        this.nit = nit;
     }
 
-    public String getCargo() {
-        return cargo;
+    public String getTelefonoContacto() {
+        return telefonoContacto;
     }
 
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
+    public void setTelefonoContacto(String telefonoContacto) {
+        this.telefonoContacto = telefonoContacto;
     }
-
-    public boolean isEstado() {
-        return estado;
-    }
-
-    public void setEstado(boolean estado) {
-        this.estado = estado;
-    }  
 }

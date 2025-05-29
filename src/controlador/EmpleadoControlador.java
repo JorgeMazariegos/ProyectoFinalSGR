@@ -1,11 +1,12 @@
 package controlador;
 
-import java.security.NoSuchAlgorithmException;
 import modelo.Empleado;
 import dao.EmpleadoDAO;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
+import java.util.List;
 
 public class EmpleadoControlador {
      private final EmpleadoDAO dao = new EmpleadoDAO();
@@ -20,6 +21,10 @@ public class EmpleadoControlador {
         return 3;
     }
         
+        public List<Empleado> consultarEmpleados(){
+            return dao.consultarEmpleados();
+        }
+        
         public String hashMD5(String input) throws NoSuchAlgorithmException{
         MessageDigest md = MessageDigest.getInstance("MD5");
         
@@ -29,4 +34,14 @@ public class EmpleadoControlador {
         
         return bigInt.toString(16);
     }
+        
+        public boolean registrarEmpleado(String cargo, boolean estado, Date fechaIngreso, double salario, String nombre, String apellido, String telefono, String direccion, String correo, String password) throws NoSuchAlgorithmException{
+            Empleado empleado = new Empleado(cargo, estado, fechaIngreso, salario, nombre, apellido, telefono, direccion, correo, hashMD5(password));
+            return dao.registrarEmpleado(empleado);
+        }
+        
+        public boolean actualizarEmpleado(String cargo, boolean estado, double salario, int id, String nombre, String apellido, String telefono, String direccion, String correo, String password) throws NoSuchAlgorithmException{
+            Empleado empleado = new Empleado(cargo, estado, salario, id, nombre, apellido, telefono, direccion, correo, hashMD5(password));
+            return dao.actualizarEmpleado(empleado);
+        }
 }

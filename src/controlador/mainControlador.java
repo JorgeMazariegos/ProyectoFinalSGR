@@ -16,38 +16,50 @@ public class mainControlador {
     
     public boolean comprobarCliente(String correo){
         String[] correos = {"gmail.com", "hotmail.com", "yahoo.com", "icloud.com"};
-        
-        String[] cSeparar =  correo.split("@");
-      
-        for(String c : correos){
-            if(cSeparar[1].equals(c)){
-                return true;
+        try {
+            String[] cSeparar = correo.split("@");
+            for(String c : correos){
+                if(cSeparar[1].equals(c)){
+                    return true;
+                }
             }
-        }
-        return false;
+            }catch(Exception e) {
+                return false;
+            }
+            return false;
     }
     
     public boolean comprobarCajero(String correo){
         String correoCorrecto = "cash.company.com";
         
-        String[] cSeparar =  correo.split("@");      
-       
-        return cSeparar[1].equals(correoCorrecto);
+        try{
+            String[] cSeparar =  correo.split("@");      
+            return cSeparar[1].equals(correoCorrecto);
+        }catch(Exception e){
+            return false;
+        }
+
     }
     
     public boolean comprobarMesero(String correo){
         String correoCorrecto = "mes.company.com";
         
-        String[] cSeparar =  correo.split("@");      
-       
-        return cSeparar[1].equals(correoCorrecto);
+        try{
+            String[] cSeparar =  correo.split("@");      
+            return cSeparar[1].equals(correoCorrecto);
+        }catch(Exception e){
+            return false;
+        }
     }
     
     public boolean comprobarAdministrador(String correo){
         String correoCorrecto = "admin.company.com";
         
-        String[] cSeparar =  correo.split("@");      
-       
-        return cSeparar[1].equals(correoCorrecto);
+        try{
+            String[] cSeparar =  correo.split("@");      
+            return cSeparar[1].equals(correoCorrecto);
+        }catch(Exception e){
+            return false;
+        }
     }
 }
