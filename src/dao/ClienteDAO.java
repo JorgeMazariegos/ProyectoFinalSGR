@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 public class ClienteDAO {
         private final Conexion conexion = new Conexion();
         Connection cn;
@@ -105,6 +107,29 @@ public class ClienteDAO {
         }
 
         return false;
+        }
+        
+        public String nombreCliente(String nit){
+            query = "SELECT nombre FROM usuarios WHERE nit = ?";
+            String nombre = "";
+            try{
+                cn = conexion.getConnection();
+                ps = cn.prepareStatement(query);
+                ps.setString(1, nit);
+                r = ps.executeQuery();
+                
+                while(r.next()){
+                    nombre = r.getString("nombre");
+                }
+            
+                r.close();
+                ps.close();
+                cn.close();
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return nombre;
         }
  /**       public boolean DeleteCliet(ClienteModelo Clien){
             

@@ -7,13 +7,23 @@ public class Producto {
     private String descripcion;
     private int stock;
     private boolean disponible;
+    String tipo;
 
-    public Producto(String nombre, double precio, String descripcion, int stock, boolean disponible) {
+    public Producto(String nombre, double precio, String descripcion, int stock, boolean disponible, String tipo) {
         this.nombre = nombre;
         this.precio = precio;
         this.descripcion = descripcion;
         this.stock = stock;
         this.disponible = disponible;
+        this.tipo = tipo;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public int getId() {

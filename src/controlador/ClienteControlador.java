@@ -28,6 +28,10 @@ public class ClienteControlador {
         return dao.comprobarCorreo(correo);
     }
     
+    public String consularNombre(String nit){
+        return dao.nombreCliente(nit);
+    }
+    
     public String hashMD5(String input) throws NoSuchAlgorithmException{
         MessageDigest md = MessageDigest.getInstance("MD5");
         

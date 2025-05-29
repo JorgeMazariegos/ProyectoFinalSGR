@@ -27,7 +27,7 @@ public class ProductoDAO {
             r = ps.executeQuery();
                
             while(r.next()) {
-                producto = new Producto(r.getString("nombre"), r.getDouble("precio"), r.getString("descripcion"), r.getInt("stock"), r.getBoolean("disponible"));
+                producto = new Producto(r.getString("nombre"), r.getDouble("precio"), r.getString("descripcion"), r.getInt("stock"), r.getBoolean("disponible"), r.getString("tipo"));
                 listaProductos.add(producto);
             }
         
