@@ -15,4 +15,9 @@ public class ProveedorControlador {
         Proveedor proveedor = new Proveedor(nit, telefonoContacto, nombre, telefono, direccion, correo);
         return dao.registrarProveedor(proveedor);
     }
+    
+    public boolean actualizarProveedor(int id, String nombre, String nit,  String correo, String direccion, String telefono, String telefonoContacto){
+        Proveedor proveedor = new Proveedor(id, nombre, nit, correo, direccion, telefono, telefonoContacto);
+        return dao.actualizarProveedor(proveedor);
+    }
 }

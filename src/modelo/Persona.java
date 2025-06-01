@@ -17,15 +17,6 @@ public class Persona {
         this.correo = correo;
         this.password = password;
     }
-    
-    public Persona(int id, String nombre, String apellido,String telefono, String direccion, String correo){
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.telefono = telefono;
-        this.direccion = direccion; 
-        this.correo = correo;
-    }
 
     public Persona( String nombre,String telefono, String direccion, String correo, String password){
         this.nombre = nombre;
@@ -35,12 +26,21 @@ public class Persona {
         this.password = password;
     }
     
-    public Persona(int id, String nombre,String telefono, String direccion, String correo){
+    public Persona(int id, String nombre, String apellido, String telefono, String direccion, String correo){
+        this.id = id;
         this.nombre = nombre;
+        this.apellido = apellido;
         this.telefono = telefono;
         this.direccion = direccion; 
         this.correo = correo;
+    }
+    
+    public Persona(int id, String nombre,String telefono, String direccion, String correo){
         this.id = id;
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.direccion = direccion; 
+        this.correo = correo;      
     }
 
     public Persona(String nombre, String telefono, String direccion, String correo) {
@@ -49,6 +49,7 @@ public class Persona {
         this.direccion = direccion;
         this.correo = correo;
     }
+     
     
     public int getId() {
         return id;

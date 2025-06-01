@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 public class ClienteDAO {
@@ -89,24 +91,28 @@ public class ClienteDAO {
         }
         
         public boolean actualizarCliente(Cliente cliente) {
-        query = "UPDATE Usuarios SET nombre = ?, telefono = ?, correo = ?, direccion = ?, password = ? WHERE id_emp=?";
+        query = "UPDATE usuarios SET nombre = ?, telefono = ?, correo = ?, direccion = ?, password = ?  nit = ? WHERE id=?";
 
-        try (Connection conn = conexion.getConnection();
-            PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setString(1, cliente.getNombre());
-            stmt.setString(2, cliente.getTelefono());
-            stmt.setString(3, cliente.getCorreo());
-            stmt.setString(4, cliente.getDireccion());
-            stmt.setString(4, cliente.getPassword());
-            stmt.setInt(5, cliente.getId());
-            stmt.executeUpdate();
-            return true;
+        int actualizar = 0;
+        try  {
+            cn = conexion.getConnection();
+            ps = cn.prepareStatement(query);
+            ps.setString(1, cliente.getNombre());
+            ps.setString(2, cliente.getTelefono());
+            ps.setString(3, cliente.getCorreo());
+            ps.setString(4, cliente.getDireccion());
+            ps.setString(4, cliente.getPassword());
+            ps.setString(5, cliente.getNit());
+            ps.setInt(6, cliente.getId());
+            actualizar = ps.executeUpdate();
+            ps.close();
+            cn.close();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
 
-        return false;
+        return actualizar == 1;
         }
         
         public String nombreCliente(String nit){
@@ -131,7 +137,36 @@ public class ClienteDAO {
             }
             return nombre;
         }
- /**       public boolean DeleteCliet(ClienteModelo Clien){
-            
-        }*/
+        
+        public List<Cliente> consultarClientes(){
+            List<Cliente> listaClientes = new ArrayList<>();
+            Cliente cliente;
+            query = "SELECT * FROM usuarios";
+  
+            try {
+            cn = conexion.getConnection();
+            ps = cn.prepareStatement(query);
+            r = ps.executeQuery();
+               
+            while(r.next()) {
+                String nit = r.getString("nit");
+                int id = r.getInt("id");
+                String nombre = r.getString("nombre");
+                String telefono = r.getString("telefono");
+                String direccion = r.getString("direccion");
+                String correo = r.getString("correo");
+                String password = r.getString("password");
+                cliente = new Cliente(nit, id, nombre, telefono, direccion, correo, password);
+                listaClientes.add(cliente);
+            }
+        
+            r.close();
+            ps.close();
+            cn.close();
+
+            } catch (SQLException e) {
+                System.out.println("Error al leer datos: " + e.getMessage());            
+            }
+            return listaClientes;
+        }
 }

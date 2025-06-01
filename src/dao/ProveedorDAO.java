@@ -72,7 +72,7 @@ public class ProveedorDAO {
     }
     return seAgregoRegistro;
 }
-    public int actualizarProveedor(Proveedor proveedor) {
+    public boolean actualizarProveedor(Proveedor proveedor) {
     query = "UPDATE proveedores SET nombre = ?, nit = ?, contacto = ?, direccion = ?, telefono_empresa = ?, telefono_contacto = ? WHERE id = ?";
     int update = 0;
 
@@ -97,6 +97,6 @@ public class ProveedorDAO {
         System.out.println("Error al actualizar proveedor: " + e.getMessage());
     }
 
-    return update;
+    return update == 1;
 }
 }
