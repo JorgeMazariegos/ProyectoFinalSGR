@@ -95,7 +95,7 @@ public class Programa extends javax.swing.JFrame {
         jScrollPane13 = new javax.swing.JScrollPane();
         txtAreaDescripcionProductoCliente = new javax.swing.JTextArea();
         lblPrecioCliente = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnAgregarCliente = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane14 = new javax.swing.JScrollPane();
         tblPedidoCliente = new javax.swing.JTable();
@@ -115,7 +115,7 @@ public class Programa extends javax.swing.JFrame {
         jSeparator7 = new javax.swing.JSeparator();
         jSeparator8 = new javax.swing.JSeparator();
         lblDisponiblesCliente = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        spnClienteCantidad = new javax.swing.JSpinner();
         aplicacionCajero = new javax.swing.JPanel();
         menuBarCajero = new javax.swing.JPanel();
         lblLogOut = new javax.swing.JLabel();
@@ -978,10 +978,10 @@ public class Programa extends javax.swing.JFrame {
         lblPrecioCliente.setForeground(new java.awt.Color(255, 255, 255));
         lblPrecioCliente.setText("Precio");
 
-        jButton1.setText("Agregar al Pedido");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarCliente.setText("Agregar al Pedido");
+        btnAgregarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAgregarClienteActionPerformed(evt);
             }
         });
 
@@ -1133,7 +1133,7 @@ public class Programa extends javax.swing.JFrame {
         lblDisponiblesCliente.setForeground(new java.awt.Color(255, 255, 255));
         lblDisponiblesCliente.setText("Disponibles");
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        spnClienteCantidad.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
 
         javax.swing.GroupLayout panelAppClienteLayout = new javax.swing.GroupLayout(panelAppCliente);
         panelAppCliente.setLayout(panelAppClienteLayout);
@@ -1156,11 +1156,11 @@ public class Programa extends javax.swing.JFrame {
                                 .addGroup(panelAppClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblPrecioCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblDisponiblesCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(spnClienteCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(btnAgregarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 28, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -1189,8 +1189,8 @@ public class Programa extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblDisponiblesCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panelAppClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton1))))
+                                .addComponent(spnClienteCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnAgregarCliente))))
                     .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -2851,16 +2851,15 @@ public class Programa extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(menuBarProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jSeparator41)
-                    .addGroup(menuBarProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(lblGestionProveedore1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jSeparator11)
-                        .addComponent(jSeparator10, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jSeparator9, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblLogOut1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblGestionEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblGestionProductos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblGestionProveedore, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(lblGestionProveedore1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSeparator11)
+                    .addComponent(jSeparator10, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator9, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblLogOut1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblGestionEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblGestionProductos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblGestionProveedore, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -4281,16 +4280,17 @@ public class Programa extends javax.swing.JFrame {
                                 .addComponent(lblSalarioConsultaEmpleado2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                                 .addComponent(txtTelefonoEmpresarialAct, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel95)
                             .addGroup(jPanel11Layout.createSequentialGroup()
-                                .addComponent(lblNombreConsultaEmpleado5)
-                                .addGap(32, 32, 32)
                                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNombreActualizarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtNitActualizarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtContactoActualizarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel11Layout.createSequentialGroup()
-                                .addComponent(jLabel82)
+                                    .addComponent(jLabel95)
+                                    .addGroup(jPanel11Layout.createSequentialGroup()
+                                        .addComponent(lblNombreConsultaEmpleado5)
+                                        .addGap(32, 32, 32)
+                                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtNombreActualizarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtNitActualizarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtContactoActualizarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel82))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(0, 15, Short.MAX_VALUE))
                     .addGroup(jPanel11Layout.createSequentialGroup()
@@ -6028,17 +6028,17 @@ public class Programa extends javax.swing.JFrame {
         lblDisponiblesCliente.setText("Disponibles: " + String.valueOf(producto.getStock()));
     
         SpinnerNumberModel model = new SpinnerNumberModel(1, 1, producto.getStock(), 1);     
-        spnCantReg.setModel(model);
+        spnClienteCantidad.setModel(model);
         
         lblNombreProductoCliente.setText(producto.getNombre());
         txtAreaDescripcionProductoCliente.setText(producto.getDescripcion());
         lblPrecioCliente.setText("Precio: Q " + String.valueOf(producto.getPrecio()));
     }//GEN-LAST:event_listaProductosClienteValueChanged
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnAgregarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarClienteActionPerformed
         DefaultTableModel model = (DefaultTableModel) tblPedidoCliente.getModel();
         String productoSeleccionado = listaProductosCliente.getSelectedValue();
-        int cantidadNueva = (int) jSpinner1.getValue();
+        int cantidadNueva = (int) spnClienteCantidad.getValue();
         boolean encontrado = false;
 
         for (int i = 0; i < model.getRowCount(); i++) {
@@ -6046,9 +6046,14 @@ public class Programa extends javax.swing.JFrame {
             if (nombreProducto.equals(productoSeleccionado)) {
                 int cantidadExistente = (int) model.getValueAt(i, 2);
                 int nuevaCantidad = cantidadExistente + cantidadNueva;
+                
 
                 for (Producto producto : listaProductos) {
+
                     if (producto.getNombre().equals(productoSeleccionado)) {
+                        if((int)tblPedidoCliente.getValueAt(i, 2) + (int)spnClienteCantidad.getValue() > producto.getStock()){
+                            return;
+                        }
                         double precio = producto.getPrecio();
                         double total = nuevaCantidad * precio;
 
@@ -6078,7 +6083,7 @@ public class Programa extends javax.swing.JFrame {
                 }
             }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnAgregarClienteActionPerformed
 
     private void lblLogOut1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogOut1MouseClicked
        CardLayout card = (CardLayout)mainPanel.getLayout();
@@ -6844,6 +6849,7 @@ public class Programa extends javax.swing.JFrame {
     private javax.swing.JButton btnActualizarEmpleado;
     private javax.swing.JButton btnActualizarProducto;
     private javax.swing.JButton btnActualizarProveedor;
+    private javax.swing.JButton btnAgregarCliente;
     private javax.swing.JButton btnAgregarMesero;
     private javax.swing.JButton btnDescuento;
     private javax.swing.JButton btnDescuentoTabla;
@@ -6879,7 +6885,6 @@ public class Programa extends javax.swing.JFrame {
     private javax.swing.JPanel compOrden;
     private javax.swing.JPanel consultarPedidos;
     private javax.swing.JLabel icono;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel100;
@@ -7083,7 +7088,6 @@ public class Programa extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JLabel lblAddReg;
     private javax.swing.JLabel lblCargoConsultaEmpleado;
     private javax.swing.JLabel lblCargoConsultaEmpleado1;
@@ -7232,6 +7236,7 @@ public class Programa extends javax.swing.JFrame {
     private javax.swing.JPanel regOrden;
     private javax.swing.JSpinner spnCantReg;
     private javax.swing.JSpinner spnCantidadMesero;
+    private javax.swing.JSpinner spnClienteCantidad;
     private javax.swing.JSpinner spnMenosCantidad;
     private javax.swing.JSpinner spnMenosCantidadCliente;
     private javax.swing.JSpinner spnMenosCantidadMesero;
