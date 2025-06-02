@@ -91,7 +91,7 @@ public class ClienteDAO {
         }
         
         public boolean actualizarCliente(Cliente cliente) {
-        query = "UPDATE usuarios SET nombre = ?, telefono = ?, correo = ?, direccion = ?, password = ?  nit = ? WHERE id=?";
+        query = "UPDATE usuarios SET nombre = ?, telefono = ?, correo = ?, direccion = ?, password = ?  nit = ? WHERE id = ?";
 
         int actualizar = 0;
         try  {
@@ -101,9 +101,9 @@ public class ClienteDAO {
             ps.setString(2, cliente.getTelefono());
             ps.setString(3, cliente.getCorreo());
             ps.setString(4, cliente.getDireccion());
-            ps.setString(4, cliente.getPassword());
-            ps.setString(5, cliente.getNit());
-            ps.setInt(6, cliente.getId());
+            ps.setString(5, cliente.getPassword());
+            ps.setString(6, cliente.getNit());
+            ps.setInt(7, cliente.getId());
             actualizar = ps.executeUpdate();
             ps.close();
             cn.close();

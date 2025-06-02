@@ -516,6 +516,8 @@ public class Programa extends javax.swing.JFrame {
         txtCorreoCliente = new javax.swing.JTextField();
         btnActualizarCliente = new javax.swing.JButton();
         jLabel112 = new javax.swing.JLabel();
+        jLabel102 = new javax.swing.JLabel();
+        txtClaveActualizar = new javax.swing.JTextField();
         lblMensajeClientesActualizar = new javax.swing.JLabel();
         pnlConsultarCliente = new javax.swing.JPanel();
         jScrollPane30 = new javax.swing.JScrollPane();
@@ -1160,7 +1162,7 @@ public class Programa extends javax.swing.JFrame {
                                 .addComponent(spnClienteCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnAgregarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 28, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -1718,7 +1720,7 @@ public class Programa extends javax.swing.JFrame {
             .addGroup(regOrdenLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(regOrdenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
                     .addGroup(regOrdenLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addGroup(regOrdenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -2076,7 +2078,7 @@ public class Programa extends javax.swing.JFrame {
                         .addGap(4, 4, 4)
                         .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE))
+                    .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -4137,7 +4139,7 @@ public class Programa extends javax.swing.JFrame {
                 .addComponent(btnRegistrarProveedor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblMensajeProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addContainerGap(140, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnlRegistrarProveedorLayout = new javax.swing.GroupLayout(pnlRegistrarProveedor);
@@ -4340,7 +4342,7 @@ public class Programa extends javax.swing.JFrame {
                     .addComponent(txtTelefonoContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnActualizarProveedor)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
 
         lblMensajeActualizarProveedor.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -4516,7 +4518,7 @@ public class Programa extends javax.swing.JFrame {
                         .addComponent(jLabel97)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane25, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 31, Short.MAX_VALUE)))
+                        .addGap(0, 54, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -4663,7 +4665,7 @@ public class Programa extends javax.swing.JFrame {
                 .addComponent(lblMensajeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(86, 86, 86)
                 .addComponent(lblMensaje5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnlRegistrarClienteLayout = new javax.swing.GroupLayout(pnlRegistrarCliente);
@@ -4768,6 +4770,10 @@ public class Programa extends javax.swing.JFrame {
         jLabel112.setForeground(new java.awt.Color(255, 255, 255));
         jLabel112.setText("Cliente");
 
+        jLabel102.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel102.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel102.setText("Contraseña:");
+
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
         jPanel17Layout.setHorizontalGroup(
@@ -4793,10 +4799,6 @@ public class Programa extends javax.swing.JFrame {
                     .addGroup(jPanel17Layout.createSequentialGroup()
                         .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel17Layout.createSequentialGroup()
-                                .addComponent(lblSalarioConsultaEmpleado3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
-                                .addComponent(txtCorreoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel17Layout.createSequentialGroup()
                                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel110)
                                     .addGroup(jPanel17Layout.createSequentialGroup()
@@ -4807,8 +4809,17 @@ public class Programa extends javax.swing.JFrame {
                                             .addComponent(txtTelefonoActualizarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtNitActualizarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addComponent(jLabel112))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
+                                .addComponent(lblSalarioConsultaEmpleado3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtClaveActualizar)
+                                    .addComponent(txtCorreoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))))
                         .addGap(0, 45, Short.MAX_VALUE))))
+            .addGroup(jPanel17Layout.createSequentialGroup()
+                .addComponent(jLabel102)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -4845,9 +4856,13 @@ public class Programa extends javax.swing.JFrame {
                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSalarioConsultaEmpleado3)
                     .addComponent(txtCorreoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel102)
+                    .addComponent(txtClaveActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
                 .addComponent(btnActualizarCliente)
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         lblMensajeClientesActualizar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -4872,15 +4887,16 @@ public class Programa extends javax.swing.JFrame {
             .addGroup(pnlActualizarClienteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlActualizarClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnlActualizarClienteLayout.createSequentialGroup()
+                        .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(pnlActualizarClienteLayout.createSequentialGroup()
                         .addComponent(jLabel107)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane28, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(lblMensajeClientesActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         tabPaneGestionClientes.addTab("Actualizar", pnlActualizarCliente);
@@ -5018,7 +5034,7 @@ public class Programa extends javax.swing.JFrame {
                         .addComponent(jLabel113)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane30, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 31, Short.MAX_VALUE)))
+                        .addGap(0, 36, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -5051,12 +5067,12 @@ public class Programa extends javax.swing.JFrame {
         );
         pnlGestionClientesLayout.setVerticalGroup(
             pnlGestionClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
+            .addGap(0, 603, Short.MAX_VALUE)
             .addGroup(pnlGestionClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnlGestionClientesLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 9, Short.MAX_VALUE)
                     .addComponent(pnlGestionClientesMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 9, Short.MAX_VALUE)))
         );
 
         appAdmin.add(pnlGestionClientes, "gestionClientes");
@@ -5126,6 +5142,13 @@ public class Programa extends javax.swing.JFrame {
         for(Producto productos : listaProductos){
             model.addElement(productos.getNombre());
         }
+        List<String> filtrarProductos = new ArrayList<>();
+            for(Producto producto : listaProductos){
+                if(!filtrarProductos.contains(producto.getTipo())){
+                    filtrarProductos.add(producto.getTipo());
+                    cbxRegProductos.addItem(producto.getTipo());
+                }
+            }
         listProductos.setModel(model);
         
         }catch(NoSuchAlgorithmException e){
@@ -5778,15 +5801,15 @@ public class Programa extends javax.swing.JFrame {
             
         }
         
-        if(seRegistro == 1){
+        if(seRegistro == 1){        
+            PDFControlador.datosCliente(nitFacuta);
+            PDFControlador.generarFacturaPDF();
             for(int f = 0; f < tblProdCompletar.getRowCount(); f++){
                 for(int c = 0; c < tblProdCompletar.getColumnCount(); c++){
                     tblProdCompletar.setValueAt(null, f, c);
                 }
             }
-           
-            PDFControlador.datosCliente(nitFacuta);
-            PDFControlador.generarFacturaPDF();
+          
             actualizarDatosPedidoPendiente();
         }
     }//GEN-LAST:event_btnPagarPedidoNoCompActionPerformed
@@ -6501,8 +6524,9 @@ public class Programa extends javax.swing.JFrame {
         String telefono = txtTelefonoActualizarCliente.getText();
         String direccion = txtAreaDireccionActualizarCliente.getText();
         String correo = txtCorreoCliente.getText();
+        String password = txtClaveActualizar.getText();
 
-        if (clienteControlador.actualizarClientes(nit, id, nombre, telefono, direccion, correo, correo)) {
+        if (clienteControlador.actualizarClientes(nit, id, nombre, telefono, direccion, correo, password)) {
             lblMensajeClientesActualizar.setText("Cliente actualizado correctamente.");
         } else {
             lblMensajeClientesActualizar.setText("Error al actualizar el cliente.");
@@ -6819,12 +6843,15 @@ public class Programa extends javax.swing.JFrame {
     }
     
     private int numPedido(){
-        int numPedido;
-        int ultimoIndex = listaPedidos.size() - 1;
-        Pedido ultimoPedido = listaPedidos.get(ultimoIndex);
+        int numPedido = 0;
+        for(Pedido pedido : listaPedidos){
+            int currentNum = pedido.getNumPedido();
+            if (currentNum > numPedido) {
+            numPedido = currentNum;
+            }
+        }
         
-        numPedido = ultimoPedido.getNumPedido() + 1;
-        
+        numPedido = numPedido + 1;      
         return numPedido;
     }
     
@@ -6889,6 +6916,7 @@ public class Programa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel100;
     private javax.swing.JLabel jLabel101;
+    private javax.swing.JLabel jLabel102;
     private javax.swing.JLabel jLabel103;
     private javax.swing.JLabel jLabel104;
     private javax.swing.JLabel jLabel105;
@@ -7275,6 +7303,7 @@ public class Programa extends javax.swing.JFrame {
     private javax.swing.JTextArea txtAreaDireccionProveedorReg;
     private javax.swing.JTextField txtCargoActualizarEmpleado;
     private javax.swing.JTextField txtCargoEmpleado;
+    private javax.swing.JTextField txtClaveActualizar;
     private javax.swing.JTextField txtClaveActualizarEmpleado;
     private javax.swing.JTextField txtClaveClienteReg;
     private javax.swing.JTextField txtClaveEmpleado;
